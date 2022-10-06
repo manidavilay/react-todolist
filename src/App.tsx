@@ -69,6 +69,25 @@ function App() {
     });
   };
 
+  // Confirm updated task and deadline
+  const confirmUpdatedTask = (id: number): void => {
+    setIsUpdating(null);
+    setTodoList(
+      todoList.map((task) => {
+        if (task.id === id) {
+          return {
+            ...todoList,
+            ...task,
+            taskName: updatedTaskName,
+            description: updatedDescription,
+            deadline: updatedDeadline,
+          };
+        }
+        return task;
+      })
+    );
+  };
+
   return (
     <div className="App">
       <AddTask
@@ -89,6 +108,7 @@ function App() {
               updatedDeadline={updatedDeadline}
               handleUpdateInput={handleUpdateInput}
               updateTask={updateTask}
+              confirmUpdatedTask={confirmUpdatedTask}
             />
           );
         })}
