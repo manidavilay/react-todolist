@@ -1,6 +1,14 @@
-const CompletedTasks = () => {
+import { ITask } from "../utils/Interfaces";
+
+interface Props {
+    completedTask: ITask
+};
+
+const CompletedTasks = ({ completedTask }: Props) => {
     return (
-        <div></div>
+        <div>
+            {completedTask.taskName}
+        </div>
     )
 };
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import AddTask from "./components/AddTask";
+import CompletedTasks from "./components/CompletedTasks";
 import TasksList from "./components/TasksList";
 import { ITask } from "./utils/Interfaces";
 
@@ -178,6 +179,12 @@ function App() {
               completeTask={completeTask}
             />
           );
+        })}
+      </div>
+      <div>
+        <h2>Completed Tasks:</h2>
+        {completedTasks.map((completedTask) => {
+          return <CompletedTasks completedTask={completedTask} />;
         })}
       </div>
     </div>
