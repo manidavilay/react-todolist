@@ -9,6 +9,10 @@ function App() {
   const [description, setDescription] = useState<string>("No description");
   const [deadline, setDeadline] = useState<number>(0);
   const [todoList, setTodoList] = useState<ITask[]>([]);
+  const [updatedTaskName, setUpdatedTaskName] = useState<string>("");
+  const [updatedDescription, setUpdatedDescription] = useState<string>("");
+  const [updatedDeadline, setUpdatedDeadline] = useState<number>(0);
+  const [isUpdating, setIsUpdating] = useState<number | null>(null);
 
   // Initial task and deadline inputs handler
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -19,6 +23,24 @@ function App() {
     } else {
       setDeadline(parseFloat(e.target.value));
     }
+  };
+
+  // Updated task and deadline inputs handler
+  const handleUpdateInput = (
+    id: number,
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    todoList.map((task) => {
+      if (task.id === id) {
+        if (e.target.name === "task") {
+          setUpdatedTaskName(e.target.value);
+        } else if (e.target.name === "description") {
+          setUpdatedDescription(e.target.value);
+        } else {
+          setUpdatedDeadline(parseFloat(e.target.value));
+        }
+      }
+    });
   };
 
   // Add new task
@@ -35,6 +57,18 @@ function App() {
     setDeadline(0);
   };
 
+  // Show updating form and update task and deadline
+  const updateTask = (id: number): void => {
+    todoList.map((task) => {
+      if (task.id === id) {
+        setIsUpdating(task.id);
+        setUpdatedTaskName(task.taskName);
+        setUpdatedDescription(task.description);
+        setUpdatedDeadline(task.deadline);
+      }
+    });
+  };
+
   return (
     <div className="App">
       <AddTask
@@ -46,7 +80,17 @@ function App() {
       <div>
         <h2>List of tasks:</h2>
         {todoList.map((task) => {
-          return <TasksList task={task} />;
+          return (
+            <TasksList
+              task={task}
+              isUpdating={isUpdating}
+              updatedTaskName={updatedTaskName}
+              updatedDescription={updatedDescription}
+              updatedDeadline={updatedDeadline}
+              handleUpdateInput={handleUpdateInput}
+              updateTask={updateTask}
+            />
+          );
         })}
       </div>
     </div>
