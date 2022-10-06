@@ -1,3 +1,5 @@
+import "./AddTask.scss";
+
 interface Props {
   task: string;
   deadline: number;

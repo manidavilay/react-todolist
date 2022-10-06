@@ -39,8 +39,27 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## To add sass to our project
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `npm i -D node-sass`
+### `npm i -D @types/node-sass`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Next we create our .scss files in each of our component (one scss file for each component).
+Then we import our .scss file in our .tsx file.
+
+### `npm i -D npm-run-all`
+
+Lastly we create the following npm run scripts
+
+```
+"scripts": {
+    "build:css": "node-sass src/ -o src/ ",
+    "watch:css": "npm run build:css && node-sass src/ -o src/ -w -r",
+    "start:js": "react-scripts-ts start",
+    "start": "npm-run-all -p watch:css start:js",
+    "build:js": "react-scripts-ts build",
+    "build": "npm-run-all build:*",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject",
+  },
+```

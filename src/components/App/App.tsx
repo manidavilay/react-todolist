@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
-import AddTask from "./components/AddTask";
-import CompletedTasks from "./components/CompletedTasks";
-import TasksList from "./components/TasksList";
-import { ITask } from "./utils/Interfaces";
+import AddTask from "../AddTask/AddTask";
+import CompletedTasks from "../CompletedTasks/CompletedTasks";
+import TasksList from "../TasksList/TasksList";
+import { ITask } from "../../utils/Interfaces";
 
 function App() {
   const [task, setTask] = useState<string>("");

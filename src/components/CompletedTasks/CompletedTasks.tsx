@@ -1,4 +1,5 @@
-import { ITask } from "../utils/Interfaces";
+import { ITask } from "../../utils/Interfaces";
+import "./CompletedTasks.scss";
 
 interface Props {
     completedTask: ITask

@@ -1,4 +1,5 @@
-import { ITask } from "../utils/Interfaces";
+import { ITask } from "../../utils/Interfaces";
+import "./TasksList.scss";
 
 interface Props {
   task: ITask;
