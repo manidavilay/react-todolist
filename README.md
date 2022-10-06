@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# React simple todo list
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a simple todo list made in React and Typescript where you can add different tasks, with a description, and a deadline
 
 ## Available Scripts
 
