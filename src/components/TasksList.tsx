@@ -14,6 +14,7 @@ interface Props {
   deleteTask(id: number): void;
   confirmDeletingTask(id: number): void;
   cancelDeletingTask(id: number): void;
+  completeTask(id: number): void;
 }
 
 const TasksList = ({
@@ -29,7 +30,8 @@ const TasksList = ({
   cancelUpdatingTask,
   deleteTask,
   confirmDeletingTask,
-  cancelDeletingTask
+  cancelDeletingTask,
+  completeTask
 }: Props) => {
   return (
     <div>
@@ -79,6 +81,7 @@ const TasksList = ({
         ) : (
             <button onClick={() => deleteTask(task.id)}>Delete task</button>
         )}
+        <button onClick={() => completeTask(task.id)}>Complete task</button>
     </div>
   );
 };

@@ -16,6 +16,7 @@ function App() {
   const [deletingIsConfirmed, setDeletingIsConfirmed] = useState<number | null>(
     null
   );
+  const [completedTasks, setCompletedTasks] = useState<ITask[]>([]);
 
   // Initial task and deadline inputs handler
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -128,6 +129,26 @@ function App() {
     });
   };
 
+  // Complete task
+  const completeTask = (id: number): void => {
+    todoList.map((task) => {
+      if (task.id === id) {
+        const completedTask = {
+          id: task.id,
+          taskName: task.taskName,
+          description: task.description,
+          deadline: task.deadline,
+        };
+        setCompletedTasks([...completedTasks, completedTask]);
+        setTodoList(
+          todoList.filter((task) => {
+            return task.id !== id;
+          })
+        );
+      }
+    });
+  };
+
   return (
     <div className="App">
       <AddTask
@@ -154,6 +175,7 @@ function App() {
               confirmDeletingTask={confirmDeletingTask}
               deletingIsConfirmed={deletingIsConfirmed}
               cancelDeletingTask={cancelDeletingTask}
+              completeTask={completeTask}
             />
           );
         })}
