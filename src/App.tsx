@@ -88,6 +88,15 @@ function App() {
     );
   };
 
+  // Cancel task and deadline updating
+  const cancelUpdatingTask = (id: number): void => {
+    todoList.map((task) => {
+      if (task.id === id) {
+        setIsUpdating(null);
+      }
+    });
+  };
+
   return (
     <div className="App">
       <AddTask
@@ -109,6 +118,7 @@ function App() {
               handleUpdateInput={handleUpdateInput}
               updateTask={updateTask}
               confirmUpdatedTask={confirmUpdatedTask}
+              cancelUpdatingTask={cancelUpdatingTask}
             />
           );
         })}

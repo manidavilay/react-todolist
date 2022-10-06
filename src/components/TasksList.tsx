@@ -9,6 +9,7 @@ interface Props {
   updateTask(id: number): void;
   handleUpdateInput(id: number, e: React.ChangeEvent<HTMLInputElement>): void;
   confirmUpdatedTask(id: number): void;
+  cancelUpdatingTask(id: number): void;
 }
 
 const TasksList = ({
@@ -20,6 +21,7 @@ const TasksList = ({
   updateTask,
   handleUpdateInput,
   confirmUpdatedTask,
+  cancelUpdatingTask
 }: Props) => {
   return (
     <div>
@@ -54,6 +56,7 @@ const TasksList = ({
             onChange={(e) => handleUpdateInput(task.id, e)}
           />
           <button onClick={() => confirmUpdatedTask(task.id)}>Confirm</button>
+          <button onClick={() => cancelUpdatingTask(task.id)}>Cancel</button>
         </>
       ) : (
         <button onClick={() => updateTask(task.id)}>Update task</button>
